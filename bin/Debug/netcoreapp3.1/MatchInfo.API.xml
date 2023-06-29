@@ -1,0 +1,710 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MatchInfo.API</name>
+    </assembly>
+    <members>
+        <member name="P:MatchInfo.API.Controllers.BaseApiController._context">
+            <summary>
+            The database context.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Controllers.BaseApiController.mapper">
+            <summary>
+            Automapper instance, used to convert db to dto objects and vice versa
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Controllers.MatchesController">
+            <summary>
+            A class for MatchesController.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.#ctor(MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo)">
+            <summary>
+            Ctor for MatchesController.
+            </summary>
+            <param name="uow"></param>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.GetAll(System.Boolean)">
+            <summary>
+            Get all matches.
+            </summary>
+            <param name="includeMatchOdds">Optionally request that records include match odds for each match.</param>
+            <returns>A list of matches</returns>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.GetById(System.Int32,System.Boolean)">
+            <summary>
+            Get match by identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="includeMatchOdds">Optionally request that records include match odds for each match.</param>
+            <returns>A match</returns>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.Post(MatchInfo.API.Models.MatchDto)">
+            <summary>
+            Inserts a match.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>An ActionResult of type MatchDto.</returns>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.Put(System.Int32,MatchInfo.API.Models.MatchDto)">
+            <summary>
+            Updates an existing match.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>TAn ActionResult of type MatchDto.</returns>
+        </member>
+        <member name="M:MatchInfo.API.Controllers.MatchesController.Delete(System.Int32)">
+            <summary>
+            Deletes a match.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>The action result.</returns>
+        </member>
+        <member name="T:MatchInfo.API.CustomExceptionMiddleware.ExceptionMiddleware">
+            <summary>
+            A class for ExceptionMiddleware.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.CustomExceptionMiddleware.ExceptionMiddleware._next">
+            <summary>
+            The _next.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.CustomExceptionMiddleware.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Ctor for ExceptionMiddleware.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MatchInfo.API.CustomExceptionMiddleware.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes method
+            </summary>
+            <param name="httpContext">The http context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.CustomExceptionMiddleware.ExceptionMiddleware.HandleExceptionAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Handle exceptions
+            </summary>
+            <param name="context">The http context.</param>
+            <param name="exception">The exception.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MatchInfo.API.DbContexts.MatchInfoContext">
+            <summary>
+            A class for dbContext
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.DbContexts.MatchInfoContext.Matches">
+            <summary>
+            Gets or sets the dbSet matches.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.DbContexts.MatchInfoContext.MatchOdds">
+            <summary>
+             Gets or sets the dbSet matchOdds.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.DbContexts.MatchInfoContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{MatchInfo.API.DbContexts.MatchInfoContext})">
+            <summary>
+            Ctor for MatchInfoContext.
+            </summary>
+            <param name="options">The db context options.</param>
+        </member>
+        <member name="M:MatchInfo.API.DbContexts.MatchInfoContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Override OnConfiguring method.
+            </summary>
+            <param name="optionsBuilder">The builder options.</param>
+        </member>
+        <member name="M:MatchInfo.API.DbContexts.MatchInfoContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override OnModelCreating method.
+            </summary>
+            <param name="modelBuilder">The model builder.</param>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.ID">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.MatchDateTime">
+            <summary>
+            Gets or sets the match date time.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.TeamA">
+            <summary>
+            Gets or sets the team A.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.TeamB">
+            <summary>
+            Gets or sets the team B.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.Sport">
+            <summary>
+            Gets or sets the sport.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.Description">
+            <summary>
+            Gets or sets the list of match odds.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.Match.MatchOdds">
+            <summary>
+            Gets or sets the collection of matchOdds.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.MatchOdd.ID">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.MatchOdd.Match">
+            <summary>
+            Gets or sets the match.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.MatchOdd.MatchId">
+            <summary>
+            Gets or sets the match identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.MatchOdd.Specifier">
+            <summary>
+            Gets or sets the specifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Entities.MatchOdd.Odd">
+            <summary>
+            Gets or sets the odd.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Filters.ValidationFilterAttribute">
+            <summary>
+            A class for ValidationFilterAttribute
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Filters.ValidationFilterAttribute.#ctor">
+            <summary>
+            Ctor for ValidationFilterAttribute.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Filters.ValidationFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before excuting a contoller method.
+            </summary>
+            <param name="context">The action executing context.</param>
+        </member>
+        <member name="M:MatchInfo.API.Filters.ValidationFilterAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Called before after a contoller method.
+            </summary>
+            <param name="context">The action executing context.</param>
+        </member>
+        <member name="T:MatchInfo.API.GlobalErrorHandling.Extensions.ExceptionMiddlewareExtensions">
+            <summary>
+            A class for ExceptionMiddlewareExtensions.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.GlobalErrorHandling.Extensions.ExceptionMiddlewareExtensions.ConfigureCustomExceptionMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configures custom exception middleware.
+            </summary>
+            <param name="app">The application builder.</param>
+        </member>
+        <member name="T:MatchInfo.API.GlobalErrorHandling.Models.ErrorDetails">
+            <summary>
+            A class for global handling errors.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.GlobalErrorHandling.Models.ErrorDetails.StatusCode">
+            <summary>
+            Gets or sets the ttatus code.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.GlobalErrorHandling.Models.ErrorDetails.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.GlobalErrorHandling.Models.ErrorDetails.ToString">
+            <summary>
+            Overrides string method.
+            </summary>
+            <returns>The class in json format.</returns>
+        </member>
+        <member name="T:MatchInfo.API.Models.MatchDto">
+            <summary>
+            A class for Match
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.ID">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.TeamA">
+            <summary>
+            Gets or sets the Team A.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.TeamB">
+            <summary>
+            Gets or sets the Team B.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.MatchDate">
+            <summary>
+            Gets or sets the match date (dd/MM/yyyy).
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.MatchTime">
+            <summary>
+            Gets or setsthe match time (hh:mm).
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.SportCategory">
+            <summary>
+            Gets or sets the Sport Category.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchDto.MatchOddDtos">
+            <summary>
+            Gets or sets the list of match odds.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Models.SportCategory">
+            <summary>
+            An enum for Sport Category
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Models.SportCategory.Unknown">
+            <summary>
+            Unknown sport.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Models.SportCategory.Football">
+            <summary>
+            Football,
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Models.SportCategory.Basketball">
+            <summary>
+            Basketball
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Models.MatchOddDto">
+            <summary>
+            A class for MatchOddDto.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchOddDto.ID">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchOddDto.Match">
+            <summary>
+            Gets or sets the match.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchOddDto.MatchId">
+            <summary>
+            Gets or sets the match identifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchOddDto.Specifier">
+            <summary>
+            Gets or sets the specifier.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Models.MatchOddDto.Odd">
+            <summary>
+            Gets or sets the odd.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Profiles.MatchOddProfile">
+            <summary>
+            A class for MatchOdd Mapper.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Profiles.MatchOddProfile.#ctor">
+            <summary>
+            Ctor for MatchOdd mapper.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Profiles.MatchProfile">
+            <summary>
+            A class for Match mapper.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Profiles.MatchProfile.#ctor">
+            <summary>
+            Ctor for MatchProfile.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Repositories.BaseRepository`1">
+            <summary>
+            A class for BaseRepository
+            </summary>
+            <typeparam name="T">The T type</typeparam>
+        </member>
+        <member name="F:MatchInfo.API.Repositories.BaseRepository`1._dbSet">
+            <summary>
+            The underlying dbSet
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Repositories.BaseRepository`1._mapper">
+            <summary>
+            The automapper to use for db-dto conversions
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Repositories.BaseRepository`1.context">
+            <summary>
+            EF Context
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Repositories.BaseRepository`1.dbSet">
+            <summary>
+            The underlying dbSet
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Repositories.BaseRepository`1.mapper">
+            <summary>
+            The automapper to use for db-dto conversions
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.BaseRepository`1.#ctor(MatchInfo.API.DbContexts.MatchInfoContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context">EF Context</param>
+            <param name="mapper">The automapper to use for db-dto conversions</param>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.BaseRepository`1.Insert(`0,System.Boolean)">
+            <summary>
+            Insert a new Member Airport in a Route Group
+            </summary>
+            <param name="dbItem">The member airport</param>
+            <param name="applyChanges">Apply save changes or not.</param>
+            <returns>The number of affect records</returns>
+            <exception cref="T:System.ArgumentNullException">dbItem was null</exception>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">Database threw an exception</exception>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.BaseRepository`1.Update(`0,System.Boolean)">
+            <summary>
+            Update a member airport of a Route Group
+            </summary>
+            <param name="dbItem">The instance to delete</param>
+            <param name="applyChanges">Apply save changes or not.</param>
+            <returns>The number of affect records</returns>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException">The record has been modified by another user</exception>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">Database threw an exception</exception>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.BaseRepository`1.Delete(`0,System.Boolean)">
+            <summary>
+            Delete a member airport of a Route Group
+            </summary>
+            <param name="dbItem">The instance to delete</param>
+            <param name="applyChanges">Apply save changes or not.</param>
+            <returns>The number of affect records</returns>
+        </member>
+        <member name="T:MatchInfo.API.Repositories.MatchesRepository">
+            <summary>
+            A class for MatchesRepository.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Repositories.MatchesRepository.dbMatchOddsRepo">
+            <summary>
+            The MatchOdd repository.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.#ctor(MatchInfo.API.DbContexts.MatchInfoContext,AutoMapper.IMapper,MatchInfo.API.Repositories.MatchOddsRepository)">
+            <summary>
+            Ctor for MatchesRepository.
+            </summary>
+            <param name="context">EF Context.</param>
+            <param name="mapper">The automapper to use for db-dto conversions.</param>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.Queryable(System.Boolean)">
+            <summary>
+            Get matches from db (as queryable).
+            </summary>
+            <param name="asNoTracking">Optionally request that matches are not tracked.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.GetQueryable(System.Boolean,System.Boolean)">
+            <summary>
+            Get matches from db (as queryable).
+            </summary>
+            <param name="asNoTracking">Optionally request that matches are not tracked.</param>
+            <param name="includeMatchOdds">Optionally request that records include match odds for each match.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.IncludeMatchOdds(System.Linq.IQueryable{MatchInfo.API.Entities.Match})">
+            <summary>
+            Include match odds in the queryable.
+            </summary>
+            <param name="queryable">The queryable to expand.</param>
+            <returns>The queryable which includes match odds.</returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.GetAll(System.Boolean,System.Boolean)">
+            <summary>
+            Gets all matches
+            </summary>
+            <param name="asNoTracking">Optionally request that records are not tracked.</param>
+            <param name="includeMatchOdds">Optionally request that records include match odds for each match.</param>
+            <returns>The match records</returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.GetById(System.Int64,System.Boolean,System.Boolean)">
+            <summary>
+            Get match by identifier.
+            </summary>
+            <param name="id">The match identifier.</param>
+            <param name="asNoTracking">Optionally request that records are not tracked.</param>
+            <param name="includeMatchOdds">Optionally request that records include match odds for each match.</param>
+            <returns>The match dto</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.Insert(MatchInfo.API.Models.MatchDto)">
+            <summary>
+            Inserts new match.
+            </summary>
+            <param name="model">The match dto.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.Update(MatchInfo.API.Models.MatchDto)">
+            <summary>
+            Updates an existing match.
+            </summary>
+            <param name="model">The match dto.</param>
+            <returns>The updated match.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws ArgumentNullException exception.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws KeyNotFoundException exception.</exception>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchesRepository.Delete(System.Int32)">
+            <summary>
+            Deletes the match by specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws KeyNotFoundException exception.</exception>
+        </member>
+        <member name="T:MatchInfo.API.Repositories.MatchOddsRepository">
+            <summary>
+            A class for MatchOddsRepository
+            </summary>.
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchOddsRepository.#ctor(MatchInfo.API.DbContexts.MatchInfoContext,AutoMapper.IMapper)">
+            <summary>
+            Ctor for MatchOddsRepository.
+            </summary>
+            <param name="context">EF Context.</param>
+            <param name="mapper">The automapper to use for db-dto conversions.</param>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchOddsRepository.QueryableBase">
+            <summary>
+            Gets dbSet of MatchOdd.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Repositories.MatchOddsRepository.Update(MatchInfo.API.Models.MatchOddDto,System.Boolean)">
+            <summary>
+            Update MatchOdd.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="applyChanges">Indicates if apply changes to db.</param>
+            <returns>The updated matchOdd item.</returns>
+            <exception cref="T:System.ArgumentNullException">Throws KeyNotFoundException.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws KeyNotFoundException.</exception>
+        </member>
+        <member name="T:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo">
+            <summary>
+            A unitofwork class for match info database.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo._matchInfoContext">
+            <summary>
+            The dbContext for MatchInfo database.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo._mapper">
+            <summary>
+            The mapper.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo._logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo._matchesRepository">
+            <summary>
+            The matches repository.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo._matchOddsRepository">
+            <summary>
+            The matchOdds repository.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.MatchesRepository">
+            <summary>
+            Gets or sets the matches repository.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.MatchOddsRepository">
+            <summary>
+            Gets or sets the matchOdds repository.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.Context">
+            <summary>
+            EF Context.
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.Mapper">
+            <summary>
+            Auto Mapper.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.#ctor(MatchInfo.API.DbContexts.MatchInfoContext,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Ctor for UnitOfWorkMatchInfo.
+            </summary>
+            <param name="_context">the context.</param>
+            <param name="mapper">The automapper to use for db-dto conversions.</param>
+        </member>
+        <member name="M:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.SaveChanges">
+            <summary>
+            Saves all changes of a context.
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.disposedValue">
+            <summary>
+            Indicates if matchInfoContext is disposed.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.Dispose(System.Boolean)">
+            <summary>
+            Disposes the matchInfoContext.
+            </summary>
+            <param name="disposing">The disposing value.</param>
+        </member>
+        <member name="M:MatchInfo.API.UnitOfWork.UnitOfWorkMatchInfo.Dispose">
+            <summary>
+            Disposes the matchInfoContext.
+            </summary>
+        </member>
+        <member name="T:MatchInfo.API.Utilities.DateFormatConverterUtils">
+            <summary>
+            A Converter class for datetime according to specified format (used for data annotations).
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.DateFormatConverterUtils.#ctor(System.String)">
+            <summary>
+            Ctor for DateFormatConverterUtils.
+            </summary>
+            <param name="format"></param>
+        </member>
+        <member name="T:MatchInfo.API.Utilities.EnumUtils">
+            <summary>
+            A class which manage enums
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.EnumUtils.EnumFromCategory``1(System.String,``0)">
+            <summary>
+            Gets enum value from category.
+            </summary>
+            <typeparam name="T">The T type.</typeparam>
+            <param name="value">The value.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.EnumUtils.Category(System.Enum)">
+            <summary>
+            Gets the display name attribute from the enum.
+            </summary>
+            <param name="en">The en enum.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.EnumUtils.EnumToCategory(System.Enum)">
+            <summary>
+            Gets the category attribute from the enum.
+            </summary>
+            <param name="en">The en enum.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.EnumUtils.GetEnumAttributes``1(System.Enum)">
+            <summary>
+            Gets all attributes of enum.
+            </summary>
+            <typeparam name="T">The T type.</typeparam>
+            <param name="en">The en enum.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MatchInfo.API.Utilities.StringRangeAttributeUtils">
+            <summary>
+            Class in order to specify values for a string property (used for data annotations).
+            </summary>
+        </member>
+        <member name="P:MatchInfo.API.Utilities.StringRangeAttributeUtils.AllowableValues">
+            <summary>
+            Gets or sets the allowable values for a string.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.StringRangeAttributeUtils.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Checks if the value of specified property is valid.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="validationContext">The validation context.</param>
+            <returns>Indicates if the value of specified property is valid.</returns>
+        </member>
+        <member name="T:MatchInfo.API.Utilities.TimespanFormatConverterUtils">
+            <summary>
+            A Converter class for timespan (used for data annotations).
+            </summary>
+        </member>
+        <member name="F:MatchInfo.API.Utilities.TimespanFormatConverterUtils.TimeSpanFormatString">
+            <summary>
+            Format: Hours:Minutes.
+            </summary>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.TimespanFormatConverterUtils.WriteJson(Newtonsoft.Json.JsonWriter,System.TimeSpan,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes timespan formatted to writer.
+            </summary>
+            <param name="writer">The json writer.</param>
+            <param name="value">The timespan value.</param>
+            <param name="serializer">The json serializer.</param>
+        </member>
+        <member name="M:MatchInfo.API.Utilities.TimespanFormatConverterUtils.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.TimeSpan,System.Boolean,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Converts specified object to timespan according to specified format.
+            </summary>
+            <param name="reader">The json reader.</param>
+            <param name="objectType">The type of object.</param>
+            <param name="existingValue">The timespan existing value.</param>
+            <param name="hasExistingValue">Indicates if has existing value.</param>
+            <param name="serializer">The json serializer.</param>
+            <returns>The parsed timespan</returns>
+            <exception cref="T:Newtonsoft.Json.JsonSerializationException">Throws JsonSerializationException.</exception>
+        </member>
+    </members>
+</doc>
