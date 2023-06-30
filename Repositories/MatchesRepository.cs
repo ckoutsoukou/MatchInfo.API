@@ -119,15 +119,21 @@ namespace MatchInfo.API.Repositories
 
             return mapper.Map<Entities.Match, Models.MatchDto>(dbItem);
         }
-       
+
         /// <summary>
         /// Inserts new match.
         /// </summary>
         /// <param name="model">The match dto.</param>
-        /// <returns></returns>
+        /// <returns>The inserted match dto</returns>
+        /// <exception cref="ArgumentNullException">Throws ArgumentNullException exception.</exception>
+        /// <exception cref="ArgumentException">Throws ArgumentException exception.</exception>
         public Models.MatchDto Insert(Models.MatchDto model)
         {
-            if (model is null) return null;
+            if (model is null)
+                throw new ArgumentNullException(nameof(model));
+
+            if (model.TeamA == model.TeamB)
+                throw new ArgumentException("Team A should have different value from Team B.");
 
             /* Map the dto on a new db istance to copy all essential data */
             Entities.Match dbItem = mapper.Map<Models.MatchDto, Entities.Match>(model);
@@ -143,13 +149,17 @@ namespace MatchInfo.API.Repositories
         /// Updates an existing match.
         /// </summary>
         /// <param name="model">The match dto.</param>
-        /// <returns>The updated match.</returns>
-        /// <exception cref="KeyNotFoundException">Throws ArgumentNullException exception.</exception>
+        /// <returns>The updated match dto.</returns>
+        /// <exception cref="ArgumentNullException">Throws ArgumentNullException exception.</exception>
+        /// <exception cref="ArgumentException">Throws ArgumentException exception.</exception>
         /// <exception cref="KeyNotFoundException">Throws KeyNotFoundException exception.</exception>
         public Models.MatchDto Update(Models.MatchDto model)
         {
             if(model == null)
                 throw new ArgumentNullException(nameof(model));
+
+            if (model.TeamA == model.TeamB)
+                throw new ArgumentException("Team A should have different value from Team B.");
 
             List<Models.MatchOddDto> insertedMatchOddDtos;
             List<Models.MatchOddDto> updatedMatchOddDtos;

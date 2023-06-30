@@ -47,7 +47,7 @@
             <param name="model">The model.</param>
             <returns>An ActionResult of type MatchDto.</returns>
         </member>
-        <member name="M:MatchInfo.API.Controllers.MatchesController.Put(System.Int32,MatchInfo.API.Models.MatchDto)">
+        <member name="M:MatchInfo.API.Controllers.MatchesController.Put(MatchInfo.API.Models.MatchDto)">
             <summary>
             Updates an existing match.
             </summary>
@@ -487,15 +487,18 @@
             Inserts new match.
             </summary>
             <param name="model">The match dto.</param>
-            <returns></returns>
+            <returns>The inserted match dto</returns>
+            <exception cref="T:System.ArgumentNullException">Throws ArgumentNullException exception.</exception>
+            <exception cref="T:System.ArgumentException">Throws ArgumentException exception.</exception>
         </member>
         <member name="M:MatchInfo.API.Repositories.MatchesRepository.Update(MatchInfo.API.Models.MatchDto)">
             <summary>
             Updates an existing match.
             </summary>
             <param name="model">The match dto.</param>
-            <returns>The updated match.</returns>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws ArgumentNullException exception.</exception>
+            <returns>The updated match dto.</returns>
+            <exception cref="T:System.ArgumentNullException">Throws ArgumentNullException exception.</exception>
+            <exception cref="T:System.ArgumentException">Throws ArgumentException exception.</exception>
             <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws KeyNotFoundException exception.</exception>
         </member>
         <member name="M:MatchInfo.API.Repositories.MatchesRepository.Delete(System.Int32)">

@@ -92,9 +92,9 @@ namespace MatchInfo.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotAcceptable)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        [HttpPut("{id}")]
+        [HttpPut]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        public ActionResult<MatchDto> Put([Required]int id,[Required][FromBody] MatchDto model)
+        public ActionResult<MatchDto> Put([Required][FromBody] MatchDto model)
         {
             _logger.LogInformation($"Put match [{model.TeamA}, {model.TeamB}, {model.MatchDate}, {model.MatchTime}]");
             var updatedItem = uowMatchInfo.MatchesRepository.Update( model);
