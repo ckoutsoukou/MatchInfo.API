@@ -53,7 +53,6 @@ namespace MatchInfo.API.Controllers
         /// <returns>A match</returns>
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType((int)HttpStatusCode.NotAcceptable)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [HttpGet("{id}")]
         public ActionResult<MatchDto> GetById([Required] int id,bool includeMatchOdds = false)
