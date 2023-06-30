@@ -110,11 +110,10 @@ namespace MatchInfo.API.Controllers
         /// <returns>The action result.</returns>
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType((int)HttpStatusCode.NotAcceptable)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        [HttpDelete]
-        public ActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult Delete([Required] int id)
         {
             _logger.LogWarning($"Delete match with id {id}");
             uowMatchInfo.MatchesRepository.Delete(id: id);
